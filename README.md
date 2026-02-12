@@ -1,5 +1,10 @@
 # Books ETL Pipeline (AWS)
 
+## Architecture
+
+![Architecture Diagram](docs/architecture.png)
+
+
 ## What this is
 A serverless ETL pipeline that extracts book data, stores raw files in S3, transforms it, and loads results into PostgreSQL (RDS).
 
