@@ -1,5 +1,7 @@
 # Books ETL Pipeline (AWS)
 
+![Pipeline CI](https://github.com/Toyor12/books-etl-aws/actions/workflows/ci.yml/badge.svg)
+
 ## Architecture
 
 ![Architecture Diagram](docs/architecture.png)

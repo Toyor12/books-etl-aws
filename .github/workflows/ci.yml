@@ -1,0 +1,33 @@
+name: Pipeline CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt flake8
+
+      - name: Lint Python files
+        run: flake8 src/ --max-line-length=130 --ignore=F401,E303,E501
+
+      - name: Check project structure
+        run: |
+          test -f src/extract.py || test -f src/lambda_extract.py || test -d src
+          test -f deploy.sh
+          test -f README.md
+          echo "All key files present"
